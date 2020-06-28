@@ -1,6 +1,10 @@
 #import <AudioToolbox/AudioToolbox.h>
+#import <Cephei/HBPreferences.h>
 
 UIImpactFeedbackGenerator* hapticGenerator;
+
+BOOL volumeSwitch;
+CGFloat volumeSlider;
 
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
@@ -37,13 +41,21 @@ static void callFeedback(int type) {
 
 -(void)increaseVolume {
   %orig;
-
-  callFeedback(1);
+  if (volumeSwitch) {
+    callFeedback(1);
+  }
 }
 
 -(void)decreaseVolume {
   %orig;
-
-  callFeedback(1);
+  if (volumeSwitch) {
+    callFeedback(1);
+  }
 }
 %end
+
+%ctor {
+  HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.vibrationsplusprefs"];
+  [preferences registerBool:&volumeSwitch default:YES forKey:@"volumeSwitch"];
+  [preferences registerFloat:&volumeSlider default:1 forKey:@"volumeSlider"]
+}
