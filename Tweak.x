@@ -20,7 +20,7 @@ static void callFeedback(int type) {
     hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];
   }
 
-  if([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){8, 0, 0}]) {
+  if([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){13, 0, 0}]) {
     [hapticGenerator impactOccurred];
   } else {
     if (type == 0) {
