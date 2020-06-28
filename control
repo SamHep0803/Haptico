@@ -1,0 +1,9 @@
+Package: me.samhep.vibrationsplus
+Name: vibrationsplus
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Samuel Hepworth
+Author: Samuel Hepworth
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
