@@ -28,7 +28,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>String</string>
+			<string>Volume Strength</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -37,6 +37,8 @@
 			<real>0</real>
 			<key>max</key>
 			<real>4</real>
+			<key>showValue</key>
+			<true/>
 			<key>isSegmented</key>
 			<true/>
 			<key>segmentCount</key>
@@ -49,6 +51,8 @@
 			<string>PSButtonCell</string>
 			<key>action</key>
 			<string>respring</string>
+			<key>label</key>
+			<string>Respring</string>
 		</dict>
 	</array>
 	<key>title</key>
