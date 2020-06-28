@@ -1,34 +1,49 @@
-/* How to Hook with Logos
-Hooks are written with syntax similar to that of an Objective-C @implementation.
-You don't need to #include <substrate.h>, it will be done automatically, as will
-the generation of a class list and an automatic constructor.
+#import <AudioToolbox/AudioToolbox.h>
 
-%hook ClassName
+UIImpactFeedbackGenerator* hapticGenerator;
 
-// Hooking a class method
-+ (id)sharedInstance {
-	return %orig;
+static void callFeedback(int type) {
+  UIImpactFeedbackStyle hapticStyle;
+
+  if (type == 0) {
+    hapticStyle = UIImpactFeedbackStyleHeavy;
+  } else if (type == 1) {
+    hapticStyle = UIImpactFeedbackStyleLight;
+  } else if (type == 2) {
+    hapticStyle = UIImpactFeedbackStyleMedium;
+  } else if (type == 3) {
+    hapticStyle = UIImpactFeedbackStyleRigid;
+  } else if (type == 4) {
+    hapticStyle = UIImpactFeedbackStyleSoft;
+  }
+  if (hapticGenerator == nil) {
+    hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];
+  }
+
+  if([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){8, 0, 0}]) {
+    [hapticGenerator impactOccurred];
+  } else {
+    if (type == 0) {
+      AudioServicesPlaySystemSound(1521);
+    } else if (type == 1) {
+      AudioServicesPlaySystemSound(1520);
+    } else if (type == 2) {
+      AudioServicesPlaySystemSound(1519);
+    }
+  }
 }
 
-// Hooking an instance method with an argument.
-- (void)messageName:(int)argument {
-	%log; // Write a message about this call, including its class, name and arguments, to the system log.
+%hook SBVolumeControl
 
-	%orig; // Call through to the original function with its original arguments.
-	%orig(nil); // Call through to the original function with a custom argument.
+-(void)increaseVolume {
+  %orig;
 
-	// If you use %orig(), you MUST supply all arguments (except for self and _cmd, the automatically generated ones.)
+  callFeedback(1);
 }
 
-// Hooking an instance method with no arguments.
-- (id)noArguments {
-	%log;
-	id awesome = %orig;
-	[awesome doSomethingElse];
+-(void)decreaseVolume {
+  %orig;
 
-	return awesome;
+  callFeedback(1);
 }
-
-// Always make sure you clean up after yourself; Not doing so could have grave consequences!
 %end
-*/
