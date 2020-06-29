@@ -4,16 +4,16 @@ ARCHS = arm64 arm64e
 
 THEOS_DEVICE_IP = 192.168.68.102
 
-$(TWEAK_NAME)_FRAMEWORKS = AudioToolbox
-vibrationsplus_EXTRA_FRAMEWORKS += Cephei
+Haptico_FRAMEWORKS = AudioToolbox
+Haptico_EXTRA_FRAMEWORKS += Cephei
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = vibrationsplus
+TWEAK_NAME = Haptico
 
-vibrationsplus_FILES = Tweak.x
-vibrationsplus_CFLAGS = -fobjc-arc
+Haptico_FILES = Tweak.x
+Haptico_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-SUBPROJECTS += vibrationsplusprefs
+SUBPROJECTS += hapticoprefs
 include $(THEOS_MAKE_PATH)/aggregate.mk

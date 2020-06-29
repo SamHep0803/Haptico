@@ -9,23 +9,23 @@ CGFloat volumeSlider;
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
 
-  type = (int)roundf(volumeSlider);
+  type = (int)volumeSlider;
 
   if (type == 0) {
     hapticStyle = UIImpactFeedbackStyleHeavy;
-    NSLog(@"heavy");
+    NSLog(@"vibration heavy");
   } else if (type == 1) {
     hapticStyle = UIImpactFeedbackStyleLight;
-    NSLog(@"light");
+    NSLog(@"vibration light");
   } else if (type == 2) {
     hapticStyle = UIImpactFeedbackStyleMedium;
-    NSLog(@"medium");
+    NSLog(@"vibration medium");
   } else if (type == 3) {
     hapticStyle = UIImpactFeedbackStyleRigid;
-    NSLog(@"rigid");
+    NSLog(@"vibration rigid");
   } else if (type == 4) {
     hapticStyle = UIImpactFeedbackStyleSoft;
-    NSLog(@"soft");
+    NSLog(@"vibration soft");
   }
   if (hapticGenerator == nil) {
     hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];
@@ -64,5 +64,5 @@ static void callFeedback(int type) {
 %ctor {
   HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.vibrationsplusprefs"];
   [preferences registerBool:&volumeSwitch default:YES forKey:@"volumeSwitch"];
-  [preferences registerFloat:&volumeSlider default:1 forKey:@"volumeSlider"];
+  [preferences registerFloat:&volumeSlider default:0 forKey:@"volumeSlider"];
 }

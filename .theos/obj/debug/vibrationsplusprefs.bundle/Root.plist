@@ -5,10 +5,18 @@
 	<key>items</key>
 	<array>
 		<dict>
+	    <key>cell</key>
+	    <string>PSGroupCell</string>
+	    <key>headerCellClass</key>
+	    <string>HBPackageNameHeaderCell</string>
+	    <key>packageIdentifier</key>
+	    <string>me.samhep.haptico</string>
+		</dict>
+		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Vibrations+ Settings</string>
+			<string>Haptico Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -16,13 +24,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.samhep.vibrationsplusprefs</string>
+			<string>me.samhep.hapticoprefs</string>
 			<key>key</key>
 			<string>volumeSwitch</string>
 			<key>label</key>
 			<string>Volume Haptics</string>
 			<key>PostNotification</key>
-			<string>me.samhep.vibrationsplusprefs/ReloadPrefs</string>
+			<string>me.samhep.hapticoprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -37,6 +45,8 @@
 			<real>0</real>
 			<key>max</key>
 			<real>4</real>
+			<key>showValue</key>
+			<true/>
 			<key>isSegmented</key>
 			<true/>
 			<key>segmentCount</key>
@@ -44,9 +54,11 @@
 			<key>key</key>
 			<string>volumeSlider</string>
 			<key>default</key>
-			<real>2</real>
+			<real>0</real>
+			<key>defaults</key>
+			<string>me.samhep.hapticoprefs</string>
 			<key>PostNotification</key>
-			<string>me.samhep.vibrationsplusprefs/ReloadPrefs</string>
+			<string>me.samhep.hapticoprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>

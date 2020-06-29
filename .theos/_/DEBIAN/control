@@ -1,10 +1,10 @@
-Package: me.samhep.vibrationsplus
-Name: vibrationsplus
+Package: me.samhep.haptico
+Name: Haptico
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Haptico adds nice Haptic Vibrations to everyday iOS features.
 Maintainer: Samuel Hepworth
 Author: Samuel Hepworth
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), ws.hbang.common (>= 1.15.1)
-Version: 0.0.1-21+debug
+Version: 0.1.1-5+debug
 Installed-Size: 376
