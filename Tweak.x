@@ -8,18 +8,24 @@ CGFloat volumeSlider;
 
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
-  volumeSlider = volumeSlider - 1;
+
+  type = (int)roundf(volumeSlider);
 
   if (type == 0) {
     hapticStyle = UIImpactFeedbackStyleHeavy;
+    NSLog(@"heavy");
   } else if (type == 1) {
     hapticStyle = UIImpactFeedbackStyleLight;
+    NSLog(@"light");
   } else if (type == 2) {
     hapticStyle = UIImpactFeedbackStyleMedium;
+    NSLog(@"medium");
   } else if (type == 3) {
     hapticStyle = UIImpactFeedbackStyleRigid;
+    NSLog(@"rigid");
   } else if (type == 4) {
     hapticStyle = UIImpactFeedbackStyleSoft;
+    NSLog(@"soft");
   }
   if (hapticGenerator == nil) {
     hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];

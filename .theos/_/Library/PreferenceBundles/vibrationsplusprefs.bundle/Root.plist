@@ -34,19 +34,19 @@
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>min</key>
-			<real>1</real>
+			<real>0</real>
 			<key>max</key>
-			<real>5</real>
-			<key>showValue</key>
-			<true/>
+			<real>4</real>
 			<key>isSegmented</key>
 			<true/>
 			<key>segmentCount</key>
-			<integer>5</integer>
+			<integer>4</integer>
 			<key>key</key>
 			<string>volumeSlider</string>
+			<key>default</key>
+			<real>2</real>
 			<key>PostNotification</key>
-			<string>com.bundleID.somethingPrefs/ReloadPrefs</string>
+			<string>me.samhep.vibrationsplusprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
