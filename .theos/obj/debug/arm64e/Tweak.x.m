@@ -7,27 +7,55 @@ UIImpactFeedbackGenerator* hapticGenerator;
 BOOL volumeSwitch;
 CGFloat volumeSlider;
 
+
+
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
 
   type = (int)volumeSlider;
 
-  if (type == 0) {
-    hapticStyle = UIImpactFeedbackStyleHeavy;
-    NSLog(@"vibration heavy");
-  } else if (type == 1) {
-    hapticStyle = UIImpactFeedbackStyleLight;
-    NSLog(@"vibration light");
-  } else if (type == 2) {
-    hapticStyle = UIImpactFeedbackStyleMedium;
-    NSLog(@"vibration medium");
-  } else if (type == 3) {
-    hapticStyle = UIImpactFeedbackStyleRigid;
-    NSLog(@"vibration rigid");
-  } else if (type == 4) {
-    hapticStyle = UIImpactFeedbackStyleSoft;
-    NSLog(@"vibration soft");
+  switch (type) {
+    case 0:
+      hapticStyle = UIImpactFeedbackStyleHeavy;
+      NSLog(@"vibration heavy");
+      break;
+    case 1:
+      hapticStyle = UIImpactFeedbackStyleLight;
+      NSLog(@"vibration light");
+      break;
+    case 2:
+      hapticStyle = UIImpactFeedbackStyleMedium;
+      NSLog(@"vibration medium");
+      break;
+    case 3:
+      hapticStyle = UIImpactFeedbackStyleRigid;
+      NSLog(@"vibration rigid");
+      break;
+    case 4:
+      hapticStyle = UIImpactFeedbackStyleSoft;
+      NSLog(@"vibration soft");
+      break;
+    default:
+      hapticStyle = UIImpactFeedbackStyleMedium;
+      NSLog(@"vibration medium");
   }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (hapticGenerator == nil) {
     hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];
   }
@@ -69,7 +97,7 @@ static void callFeedback(int type) {
 @class SBVolumeControl; 
 static void (*_logos_orig$_ungrouped$SBVolumeControl$increaseVolume)(_LOGOS_SELF_TYPE_NORMAL SBVolumeControl* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBVolumeControl$increaseVolume(_LOGOS_SELF_TYPE_NORMAL SBVolumeControl* _LOGOS_SELF_CONST, SEL); static void (*_logos_orig$_ungrouped$SBVolumeControl$decreaseVolume)(_LOGOS_SELF_TYPE_NORMAL SBVolumeControl* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$SBVolumeControl$decreaseVolume(_LOGOS_SELF_TYPE_NORMAL SBVolumeControl* _LOGOS_SELF_CONST, SEL); 
 
-#line 47 "Tweak.x"
+#line 75 "Tweak.x"
 
 
 static void _logos_method$_ungrouped$SBVolumeControl$increaseVolume(_LOGOS_SELF_TYPE_NORMAL SBVolumeControl* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
@@ -87,11 +115,11 @@ static void _logos_method$_ungrouped$SBVolumeControl$decreaseVolume(_LOGOS_SELF_
 }
 
 
-static __attribute__((constructor)) void _logosLocalCtor_4bc127fe(int __unused argc, char __unused **argv, char __unused **envp) {
-  HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.vibrationsplusprefs"];
+static __attribute__((constructor)) void _logosLocalCtor_de8539e1(int __unused argc, char __unused **argv, char __unused **envp) {
+  HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.hapticoprefs"];
   [preferences registerBool:&volumeSwitch default:YES forKey:@"volumeSwitch"];
   [preferences registerFloat:&volumeSlider default:0 forKey:@"volumeSlider"];
 }
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBVolumeControl = objc_getClass("SBVolumeControl"); { MSHookMessageEx(_logos_class$_ungrouped$SBVolumeControl, @selector(increaseVolume), (IMP)&_logos_method$_ungrouped$SBVolumeControl$increaseVolume, (IMP*)&_logos_orig$_ungrouped$SBVolumeControl$increaseVolume);}{ MSHookMessageEx(_logos_class$_ungrouped$SBVolumeControl, @selector(decreaseVolume), (IMP)&_logos_method$_ungrouped$SBVolumeControl$decreaseVolume, (IMP*)&_logos_orig$_ungrouped$SBVolumeControl$decreaseVolume);}} }
-#line 69 "Tweak.x"
+#line 97 "Tweak.x"

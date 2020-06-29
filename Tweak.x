@@ -6,12 +6,40 @@ UIImpactFeedbackGenerator* hapticGenerator;
 BOOL volumeSwitch;
 CGFloat volumeSlider;
 
+
+// Feedback shit that somehow actually works.
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
 
   type = (int)volumeSlider;
 
-  if (type == 0) {
+  switch (type) {
+    case 0:
+      hapticStyle = UIImpactFeedbackStyleHeavy;
+      NSLog(@"vibration heavy");
+      break;
+    case 1:
+      hapticStyle = UIImpactFeedbackStyleLight;
+      NSLog(@"vibration light");
+      break;
+    case 2:
+      hapticStyle = UIImpactFeedbackStyleMedium;
+      NSLog(@"vibration medium");
+      break;
+    case 3:
+      hapticStyle = UIImpactFeedbackStyleRigid;
+      NSLog(@"vibration rigid");
+      break;
+    case 4:
+      hapticStyle = UIImpactFeedbackStyleSoft;
+      NSLog(@"vibration soft");
+      break;
+    default:
+      hapticStyle = UIImpactFeedbackStyleMedium;
+      NSLog(@"vibration medium");
+  }
+
+  /*if (type == 0) {
     hapticStyle = UIImpactFeedbackStyleHeavy;
     NSLog(@"vibration heavy");
   } else if (type == 1) {
@@ -26,7 +54,7 @@ static void callFeedback(int type) {
   } else if (type == 4) {
     hapticStyle = UIImpactFeedbackStyleSoft;
     NSLog(@"vibration soft");
-  }
+  }*/
   if (hapticGenerator == nil) {
     hapticGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:hapticStyle];
   }
@@ -62,7 +90,7 @@ static void callFeedback(int type) {
 %end
 
 %ctor {
-  HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.vibrationsplusprefs"];
+  HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.hapticoprefs"];
   [preferences registerBool:&volumeSwitch default:YES forKey:@"volumeSwitch"];
   [preferences registerFloat:&volumeSlider default:0 forKey:@"volumeSlider"];
 }
