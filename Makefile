@@ -5,7 +5,7 @@ ARCHS = arm64 arm64e
 THEOS_DEVICE_IP = 192.168.68.102
 
 $(TWEAK_NAME)_FRAMEWORKS = AudioToolbox
-$(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei
+vibrationsplus_EXTRA_FRAMEWORKS += Cephei
 
 include $(THEOS)/makefiles/common.mk
 

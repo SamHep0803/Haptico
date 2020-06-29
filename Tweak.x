@@ -8,6 +8,7 @@ CGFloat volumeSlider;
 
 static void callFeedback(int type) {
   UIImpactFeedbackStyle hapticStyle;
+  volumeSlider = volumeSlider - 1;
 
   if (type == 0) {
     hapticStyle = UIImpactFeedbackStyleHeavy;
@@ -42,14 +43,14 @@ static void callFeedback(int type) {
 -(void)increaseVolume {
   %orig;
   if (volumeSwitch) {
-    callFeedback(1);
+    callFeedback(volumeSlider);
   }
 }
 
 -(void)decreaseVolume {
   %orig;
   if (volumeSwitch) {
-    callFeedback(1);
+    callFeedback(volumeSlider);
   }
 }
 %end
@@ -57,5 +58,5 @@ static void callFeedback(int type) {
 %ctor {
   HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier:@"me.samhep.vibrationsplusprefs"];
   [preferences registerBool:&volumeSwitch default:YES forKey:@"volumeSwitch"];
-  [preferences registerFloat:&volumeSlider default:1 forKey:@"volumeSlider"]
+  [preferences registerFloat:&volumeSlider default:1 forKey:@"volumeSlider"];
 }

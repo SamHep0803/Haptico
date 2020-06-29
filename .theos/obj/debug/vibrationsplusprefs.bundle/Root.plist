@@ -8,7 +8,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>vibrationsplusprefs First Page</string>
+			<string>Vibrations+ Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -18,7 +18,7 @@
 			<key>defaults</key>
 			<string>me.samhep.vibrationsplusprefs</string>
 			<key>key</key>
-			<string>VolumeSwitch</string>
+			<string>volumeSwitch</string>
 			<key>label</key>
 			<string>Volume Haptics</string>
 			<key>PostNotification</key>
@@ -34,9 +34,9 @@
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>min</key>
-			<real>0</real>
+			<real>1</real>
 			<key>max</key>
-			<real>4</real>
+			<real>5</real>
 			<key>showValue</key>
 			<true/>
 			<key>isSegmented</key>
@@ -45,6 +45,8 @@
 			<integer>5</integer>
 			<key>key</key>
 			<string>volumeSlider</string>
+			<key>PostNotification</key>
+			<string>com.bundleID.somethingPrefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -56,6 +58,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>vibrationsplusprefs</string>
+	<string>Vibrations+</string>
 </dict>
 </plist>
